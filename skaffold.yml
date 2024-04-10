@@ -1,0 +1,18 @@
+apiVersion: skaffold/v4beta10
+kind: Config
+build:
+  local:
+    push: false
+  artifacts:
+    - image: smaheeshan/complex-client
+      context: client
+      docker:
+        dockerfile: Dockerfile.dev
+      sync:
+        manual:
+          - src: '**/*.js'
+            dest: .
+          - src: '**/*.css'
+            dest: .
+          - src: '**/*.html'
+            dest: .
